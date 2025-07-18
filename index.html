@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Amazon Clone</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style/index.css" />
+  </head>
+
+  <header id="top">
+      <div class="navbar-top">
+        <div class="container">
+          <div class="nav-logo">
+            <a href="/">
+              <img
+                src="assets/amazon_logo.png"
+                alt="Amazon Logo"
+                class="logo"
+              />
+            </a>
+          </div>
+
+          <!-- Delivery Location -->
+          <div class="delivery-location">
+            <div class="location-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="location-text">
+              <div class="deliver-to">Deliver to</div>
+              <div class="location">Peshawar</div>
+            </div>
+          </div>
+
+          <!-- Search Bar -->
+          <div class="search-container">
+            <div class="search-select">
+              <select class="search-dropdown">
+                <option value="All">All Departments</option>
+                <option value="Arts">Arts & Crafts</option>
+                <option value="Baby">Baby</option>
+                <option value="Beauty">Beauty & Personal Care</option>
+                <option value="Computers">Computers</option>
+                <option value="Deals">Today's Deals</option>
+              </select>
+              <span class="dropdown-arrow"
+                ><i class="fas fa-caret-down"></i
+              ></span>
+            </div>
+            <input
+              type="text"
+              class="search-input"
+              placeholder="Search Amazon"
+            />
+            <button class="search-button">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+
+          <!-- Account & Lists -->
+          <div class="account-section">
+            <div class="account-line1">Hello, <span class="Sign_in_span"><a href="pages/login.html">Sign In </a></span></div>
+            <div class="account-line2">
+              Account & Lists
+              <i class="fas fa-caret-down"></i>
+            </div>
+          </div>
+
+          <!-- Returns & Orders -->
+          <div class="returns-section">
+            <div class="returns-line1">Returns</div>
+            <div class="returns-line2">& Orders</div>
+          </div>
+
+          <!-- Cart -->
+          <div class="cart-section">
+            <div class="cart-count">0</div>
+            <i class="fas fa-shopping-cart cart-icon"></i>
+            <div class="cart-text"><a href="pages/cart.html">Cart</a></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Secondary Navigation Bar -->
+      <div class="navbar-secondary">
+        <div class="container">
+          <div class="nav-left">
+            <div class="all-menu">
+              <i class="fas fa-bars"></i>
+              <span>All</span>
+            </div>
+            <div class="nav-item">Today's Deals</div>
+            <div class="nav-item">Customer Service</div>
+            <div class="nav-item">Registry</div>
+            <div class="nav-item">Gift Cards</div>
+            <div class="nav-item">Sell</div>
+          </div>
+          <div class="nav-right">
+            <div class="nav-item">Shop deals in Electronics</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Body -->
+    <main>
+      <div id="carouselExampleFade" class="carousel slide carousel-fade">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="assets/Hero1.png" class="d-block w-100" alt="..." />
+          </div>
+          <div class="carousel-item">
+            <img src="assets/hero2.png" class="d-block w-100" alt="..." />
+          </div>
+          <div class="carousel-item">
+            <img src="assets/Hero3.png" class="d-block w-100" alt="..." />
+          </div>
+           <div class="carousel-item">
+            <img src="assets/hero4.png" class="d-block w-100" alt="..." />
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleFade"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon btnNaviate" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleFade"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon btnNaviate" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+
+<!-- Cart System.. -->
+
+<div class="card-container">
+  <div class="card shadow">
+  <img src="assets/box1_image.jpg" class="card-img-top" alt="Cloth" />
+  <div class="card-body">
+    <h5 class="card-title">Stylish Shirt</h5>
+    <p class="card-price">PKR 3,400</p>
+    <p class="card-updated">Last updated: <span>3 mins ago</s,pan></p>
+    <button class="btnCart" onclick="addToCart(1,'Stylish Shirt',3400,'../assets/box1_image.jpg')">Add to Cart</button>
+  </div>
+</div>
+
+
+
+
+<div class="card shadow">
+  <img src="assets/box2_image.jpg" class="card-img-top" alt="Cloth" />
+  <div class="card-body">
+    <h5 class="card-title">Health And Personal</h5>
+    <p class="card-price">PKR 3,400</p>
+    <p class="card-updated">Last updated: <span>3 mins ago</span></p>
+    <button class="btnCart" onclick="addToCart(2,'Stylish Shirt',3400,'../assets/box2_image.jpg')">Add to Cart</button>
+  </div>
+</div>
+
+<div class="card shadow">
+  <img src="assets/box3_image.jpg" class="card-img-top" alt="Cloth" />
+  <div class="card-body">
+    <h5 class="card-title">Furniture</h5>
+    <p class="card-price">PKR 10000</p>
+    <p class="card-updated">Last updated: <span>3 mins ago</span></p>
+    <button class="btnCart" onclick="addToCart(3,'Furniture',10000,'../assets/box3_image.jpg')">Add to Cart</button>
+  </div>
+</div>
+
+<div class="card shadow">
+  <img src="assets/Gaming corner.jpg" class="card-img-top" alt="Cloth" />
+  <div class="card-body">
+    <h5 class="card-title"> </h5>
+    <p class="card-price">PKR 3,400</p>
+    <p class="card-updated">Last updated:Work Space <span>3 mins ago</span></p>
+    <button class="btnCart" onclick="addToCart(4,'Work Space',3400,'../assets/Gaming corner.jpg')"> Add to Cart</button>
+  </div>
+</div>
+
+
+
+<div class="card shadow">
+  <img src="assets/box5_image.jpg" class="card-img-top" alt="Cloth" />
+  <div class="card-body">
+    <h5 class="card-title">Beauty Picks</h5>
+    <p class="card-price">PKR 5000</p>
+    <p class="card-updated">Last updated: <span>3 mins ago</span></p>
+    <button class="btnCart" onclick="addToCart(5,'Beauty Picks',5000,'../assets/box5_image.jpg')">Add to Cart</button>
+  </div>
+</div>
+
+<div class="card shadow">
+  <img src="assets/New year ,now You.jpg" class="card-img-top" alt="Cloth" />
+  <div class="card-body">
+    <h5 class="card-title">New Year</h5>
+    <p class="card-price">PKR 5000</p>
+    <p class="card-updated">Last updated: <span>3 mins ago</span></p>
+    <button class="btnCart" onclick="addToCart(6,'New Year',5000,'../assets/New year ,now You.jpg')">Add to Cart</button>
+  </div>
+</div>
+
+<div class="card shadow">
+  <img src="assets/box6_image.jpg" class="card-img-top" alt="Cloth" />
+  <div class="card-body">
+    <h5 class="card-title">Pet Care</h5>
+    <p class="card-price">4000</p>
+    <p class="card-updated">Last updated: <span>3 mins ago</span></p>
+    <button class="btnCart" onclick="addToCart(7,'Pet Care',4000,'../assets/box6_image.jpg')">Add to Cart</button>
+  </div>
+</div>
+
+
+
+<div class="card shadow">
+  <img src="assets/box8_image.jpg" class="card-img-top" alt="Cloth" />
+  <div class="card-body">
+    <h5 class="card-title">Discover Fashion Trends</h5>
+    <p class="card-price">PKR 7,400</p>
+    <p class="card-updated">Last updated: <span>3 mins ago</span></p>
+    <button class="btnCart" onclick="addToCart(8,'Discover Fashion Trends',7400,'../assets/box8_image.jpg')">Add to Cart</button>
+  </div>
+</div>
+
+</div>
+
+
+
+     <!-- Footer -->
+      <footer>
+       <div class="back-to-top">
+        <a href="#" id="top">Back To Top</a>
+      
+       </div>
+       <div class="footer-links">
+         <div class="footer-links-container">
+           <div class="footer-column">
+             <h3>Get to Know Us</h3>
+             <ul>
+               <li>Careers</li>
+               <li>Blog</li>
+               <li>About Amazon</li>
+               <li>Investor Relations</li>
+               <li>Amazon Devices</li>
+             </ul>
+           </div>
+           <div class="footer-column">
+             <h3>Make Money with Us</h3>
+             <ul>
+               <li>Sell products on Amazon</li>
+               <li>Sell on Amazon Business</li>
+               <li>Sell apps on Amazon</li>
+               <li>Become an Affiliate</li>
+               <li>Advertise Your Products</li>
+             </ul>
+           </div>
+           <div class="footer-column">
+             <h3>Amazon Payment Products</h3>
+             <ul>
+               <li>Amazon Business Card</li>
+               <li>Shop with Points</li>
+               <li>Reload Your Balance</li>
+               <li>Amazon Currency Converter</li>
+             </ul>
+           </div>
+           <div class="footer-column">
+             <h3>Let Us Help You</h3>
+             <ul>
+               <li>Amazon and COVID-19</li>
+               <li>Your Account</li>
+               <li>Your Orders</li>
+               <li>Shipping Rates & Policies</li>
+               <li>Returns & Replacements</li>
+             </ul>
+           </div>
+         </div>
+       </div>
+       <div class="footer-logo">
+         <img src="assets/amazon_logo.png" alt="Amazon Logo" class="Amazon_logo">
+       </div>
+     </footer>
+      </div>
+
+      
+    
+    
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="script/index.js"></script>
+  </body>
+</html>
