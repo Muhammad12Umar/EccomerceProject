@@ -1,41 +1,41 @@
-// Greet the logged-in user
 const user = JSON.parse(localStorage.getItem("user"));
-if (user) {
+
+// Show welcome alert only once per session
+if (user && !sessionStorage.getItem("welcomeShown")) {
   alert(`Welcome ${user.fullName}`);
+  sessionStorage.setItem("welcomeShown", "true");
 }
 
-// counter element
-const cartCount=document.querySelector(".cart-count")
-let counter=0;
+// Get cart count element (FIXED line 👇)
+const cartCount = document.querySelector(".cart-count");
 
+// Get existing cart or initialize
+let cart = JSON.parse(localStorage.getItem("cards")) || [];
+
+// Update initial cart count
+cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
 
 // Add to cart function
-function addToCart(productId, names, price, image) {
+function addToCart(productId, name, price, image) {
   if (!user) {
-    alert("Please Register Yourself!");
+    alert("Please register or login first!");
     return;
   }
 
-  // Get existing cart or create empty array
-  const cards = JSON.parse(localStorage.getItem("cards")) || [];
+  // Check if item already exists
+  let existingItem = cart.find((item) => item.productId === productId);
 
-  // Increase counter
-  counter += 1;
-  cartCount.textContent=counter;
- 
+  if (existingItem) {
+    existingItem.quantity += 1;
+  } else {
+    cart.push({ productId, name, price, image, quantity: 1 });
+  }
 
+  // Save updated cart
+  localStorage.setItem("cards", JSON.stringify(cart));
 
-  // Create card object
-  const card = {
-    productId,
-    names,
-    price,
-    image
-  };
+  // Update cart count
+  cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
 
-  // Push and save
-  cards.push(card);
-  localStorage.setItem("cards", JSON.stringify(cards));
-
-  alert("Added to cart!");
+  alert("Item added to cart!");
 }

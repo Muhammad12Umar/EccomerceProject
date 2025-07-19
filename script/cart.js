@@ -1,28 +1,38 @@
 const cartDetails = document.querySelector("#cart-details");
-const totalQty = document.querySelector(".total-qty");
+const totalPriceElement = document.querySelector("#total-price");
+let cards = JSON.parse(localStorage.getItem("cards")) || [];
 
-const cards = JSON.parse(localStorage.getItem("cards")) || [];
+function calculateTotalPrice() {
+  let total = 0;
+  document.querySelectorAll(".card").forEach(card => {
+    const qty = parseInt(card.querySelector(".productQuantity").textContent);
+    const priceText = card.querySelector(".card-price").textContent;
+    const price = parseInt(priceText.replace("Price: ", ""));
+    total += qty * price;
+  });
+  totalPriceElement.textContent = "Total: " + total + " PKR";
+}
 
-cartDetails.innerHTML = ""; // Clear previous items
-
-// card counter
-let cardCounter = 0;
+cartDetails.innerHTML = "";
 
 cards.forEach((element, index) => {
-  // Create a new div for each card
   const cardDiv = document.createElement("div");
   cardDiv.classList.add("card", "shadow");
 
-  // Set the inner HTML
+  // Set default quantity to 1
+  let quantity = 1;
+
   cardDiv.innerHTML = `
     <img src="${element.image}" class="card-img-top" alt="Product Image" />
     <div class="card-body">
-     <div class="card-body-container">
-     <div> <p class="card-id">ID: ${element.productId}</p>
-      <h5 class="card-title">${element.names}</h5>
-      <p class="card-price">Price: ${element.price}</p></div>
-      <div class="productQuantity">0</div>
-     </div>
+      <div class="card-body-container">
+        <div>
+          <p class="card-id">ID: ${element.productId}</p>
+          <h5 class="card-title">${element.name}</h5>
+          <p class="card-price">Price: ${element.price}</p>
+        </div>
+        <div class="productQuantity">${quantity}</div>
+      </div>
       <div class="btnQuantity">
         <button class="btnAdd">➕ Add</button>
         <button class="btnSub">➖ Subtract</button>
@@ -31,52 +41,42 @@ cards.forEach((element, index) => {
     </div>
   `;
 
-  // Add card to DOM
   cartDetails.appendChild(cardDiv);
 
-  // total Quantity
-
-  // Delete button ka kaam
+  const productQuantity = cardDiv.querySelector(".productQuantity");
+  const btnAdd = cardDiv.querySelector(".btnAdd");
+  const btnSub = cardDiv.querySelector(".btnSub");
   const btnDelete = cardDiv.querySelector(".btnDelete");
-  btnDelete.addEventListener("click", () => {
-    // 1. Array se hatao
-    cards.splice(index, 1);
 
-    // 2. LocalStorage update karo
-    localStorage.setItem("cards", JSON.stringify(cards));
-
-    // 3. Page reload karo updated cards dikhane ke liye
-    location.reload();
+  // Increase quantity
+  btnAdd.addEventListener("click", () => {
+    quantity += 1;
+    productQuantity.textContent = quantity;
+    calculateTotalPrice();
   });
 
-  // Total price.
-  let totalPrice = document.querySelector("#total-price");
-  // card Quantity
-  let count = 0;
-  let total=0
-  const productQuantity = document.querySelector(".productQuantity");
-  const btnAdd = document.querySelector(".btnAdd");
-  btnAdd.addEventListener("click", function () {
-    totalPrice.textContent = element.price;
-    count += 1;
-    total=element.price * count;
-    totalPrice.textContent = total;
-    productQuantity.textContent = count;
-  });
-
-  const btnSub = document.querySelector(".btnSub");
-  btnSub.addEventListener("click", function () {
-    count -= 1;
-    productQuantity.textContent = count;
-
-    let totalDec=total-=element.price;
-    totalPrice.textContent=totalDec;
- 
-    if (count <= 0) {
-      count = 0;
-      productQuantity.textContent = count;
-
-      return;
+  // Decrease quantity
+  btnSub.addEventListener("click", () => {
+    if (quantity > 1) {
+      quantity -= 1;
+      productQuantity.textContent = quantity;
+      calculateTotalPrice();
+    } else {
+      // Remove card if quantity becomes 0
+      cardDiv.remove();
+      cards.splice(index, 1);
+      localStorage.setItem("cards", JSON.stringify(cards));
+      calculateTotalPrice();
     }
   });
+
+  // Delete product
+  btnDelete.addEventListener("click", () => {
+    cardDiv.remove();
+    cards.splice(index, 1);
+    localStorage.setItem("cards", JSON.stringify(cards));
+    calculateTotalPrice();
+  });
 });
+
+calculateTotalPrice();
