@@ -1,4 +1,5 @@
 const cartDetails = document.querySelector("#cart-details");
+const totalQuantity=document.querySelector("#total-quantity")
 const totalPriceElement = document.querySelector("#total-price");
 let cards = JSON.parse(localStorage.getItem("cards")) || [];
 
@@ -8,6 +9,7 @@ function calculateTotalPrice() {
     const qty = parseInt(card.querySelector(".productQuantity").textContent);
     const priceText = card.querySelector(".card-price").textContent;
     const price = parseInt(priceText.replace("Price: ", ""));
+  
     total += qty * price;
   });
   totalPriceElement.textContent = "Total: " + total + " PKR";
@@ -20,7 +22,7 @@ cards.forEach((element, index) => {
   cardDiv.classList.add("card", "shadow");
 
   // Set default quantity to 1
-  let quantity = 1;
+  let quantity = 1; 
 
   cardDiv.innerHTML = `
     <img src="${element.image}" class="card-img-top" alt="Product Image" />
