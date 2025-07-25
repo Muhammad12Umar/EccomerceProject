@@ -261,7 +261,7 @@ body {
   justify-content: center;
 }
 
-.Sign_in_span a{
+.Sign_in_span a {
   color: white;
   text-decoration: none;
 }
@@ -318,7 +318,7 @@ body {
 }
 .cart-text a {
   color: white;
-  text-decoration:none;
+  text-decoration: none;
 }
 
 .product-card button {
@@ -355,17 +355,18 @@ body {
 .footer-links-container {
   display: grid;
   grid-template-columns: repeat(4, 2fr);
-  width:90%;
-  text-align: center;
+  width: 90%;
+  text-align: left;
   padding: 10px;
   margin: 0 auto;
   gap: 30px;
 }
 
 .footer-column h3 {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 700;
   margin-bottom: 15px;
+  text-align: left;
 }
 
 .footer-column ul {
@@ -382,32 +383,20 @@ body {
   text-decoration: underline;
 }
 
-.footer-logo {
-  background-color: #131a22;
-  padding: 30px 0;
-  text-align: center;
-}
-
-.footer-logo img {
-  width: 100px;
-}
-
 .back-to-top a {
   color: white;
   text-decoration: none;
 }
 
-.footer-logo img{
+.footer-logo img {
   width: 150px;
   height: 40px;
 }
 
-.card-container{
+.card-container {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-
-
 }
 .card {
   width: 300px;
@@ -443,7 +432,7 @@ body {
 
 .card-price {
   font-size: 16px;
-  color: #B12704; /* Amazon's price color */
+  color: #b12704; /* Amazon's price color */
   margin-bottom: 10px;
 }
 
@@ -459,8 +448,8 @@ body {
 
 .btnCart {
   width: 100%;
-  background-color: #FFD814; /* Amazon Yellow */
-  border: 1px solid #FCD200;
+  background-color: #ffd814; /* Amazon Yellow */
+  border: 1px solid #fcd200;
   padding: 10px;
   font-weight: bold;
   font-size: 14px;
@@ -471,5 +460,9 @@ body {
 
 .btnCart:hover {
   cursor: pointer;
-  background-color: #F7CA00;
+  background-color: #f7ca00;
+}
+.returns-section a {
+  color: white;
+  text-decoration: none;
 }

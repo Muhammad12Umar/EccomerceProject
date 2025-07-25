@@ -1,25 +1,27 @@
+const loginForm = document.querySelector(".loginForm");
 const message = document.querySelector(".message");
-function showMesssage(values, color) {
-  message.textContent = values;
-  message.style.color = color;
-}
 
-const loginForm = document.querySelector(".registrationContainer");
 loginForm.addEventListener("submit", function (event) {
   event.preventDefault();
-  const users = JSON.parse(localStorage.getItem("users")) || [];
-
-  const names = event.target.name.value;
   const email = event.target.email.value;
+  const password = event.target.password.value;
 
-  const exist = users.find(
-    item => item.fullName === names && item.email === email);
+  const users = JSON.parse(localStorage.getItem("users"));
+  const user = users.find(
+    (item) => item.email === email && item.password === password
+  );
 
-  if (exist) {
-    showMesssage("successfully Login !", "green");
-    window.location.href = "../index.html";
-    localStorage.setItem("user", JSON.stringify(exist));
+  if (user) {
+    message.textContent = "Successfully Login";
+    message.style.color = "green";
+    window.location.href="../index.html"
+
+    localStorage.setItem("user",JSON.stringify(user))
+
+
   } else {
-    showMesssage("Please Register First !", "red");
+    message.textContent = "Please Register Before Login";
+    message.style.color = "red";
   }
 });
+
