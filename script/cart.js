@@ -17,6 +17,8 @@ function displayCart() {
     if (!element.quantity) {
       element.quantity = 1;
     }
+  
+    
 
     total += element.price * element.quantity;
 
@@ -44,6 +46,7 @@ function displayCart() {
     const minusBtn = card.querySelector(".mins");
     const plusBtn = card.querySelector(".plus");
 
+
     // Delete item
     deleteBtn.addEventListener("click", () => {
       cart.splice(index, 1);
@@ -51,29 +54,28 @@ function displayCart() {
     });
 
 
-    // Decrease qty
-    minusBtn.addEventListener("click", () => {
-      if (cart[index].quantity > 1) {
+    minusBtn.addEventListener("click",function(){
+      if (cart[index].quantity>1){
         cart[index].quantity--;
-                updateCart();
-      }
-      else if (card[index].quantity){
-        
-      }
-    });
+        updateCart();
 
+      }
+    })
     // Increase qty
-    plusBtn.addEventListener("click", () => {
+    plusBtn.addEventListener('click',function(){
       cart[index].quantity++;
       updateCart();
-    });
+})
+
   });
 
   totalAmount.textContent = `Rs. ${total}`;
   cartCount.textContent = cart.length;
 }
 
-function updateCart() {
-  localStorage.setItem("cart", JSON.stringify(cart));
+function updateCart () {
+  localStorage.setItem("cart",JSON.stringify(cart))
   displayCart();
+
+  
 }

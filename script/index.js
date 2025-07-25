@@ -1,10 +1,11 @@
 // ✅ Get User From LocalStorage
-const user = JSON.parse(localStorage.getItem("user"));
 
+const user = JSON.parse(localStorage.getItem("user"));
 if (user && !sessionStorage.getItem("welcomeShown")) {
   alert(`Welcome ${user.names}`);
   sessionStorage.setItem("welcomeShown", "true");
 }
+
 
 // ✅ Array of Product Objects
 const products = [
